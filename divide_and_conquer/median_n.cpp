@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 
+// Find the median in Theate(n)
 // Assumption : No duplicates exist
 int median_of_medians(std::vector<int> array, int median_rank) {
 	std::vector<int> medians;
