@@ -8,25 +8,25 @@ void swap(int * int1, int * int2) {
 }
 
 
-int partition_with_high_locality(int * array, int first, int second) {
-	int pivot = array[first];
-	int pivot_index = first;
+int partition_with_high_locality(int * array, int firstElement, int lastElement) {
+	int pivot = array[firstElement];
+	int pivot_index = firstElement;
 
-	for(int j = first+1; j <= second; j++) {
+	for(int j = firstElement+1; j <= lastElement; j++) {
 		if(array[j] <= pivot) {
 			pivot_index++; 
 			swap(array+pivot_index, array+j);
 		}
 	}
-	swap(array+first, array+pivot_index);
+	swap(array+firstElement, array+pivot_index);
 	return pivot_index;
 }
 
-void quick_sort_helper(int * array, int first, int second) {
-	if(first < second) {
-		int pivot_index = partition_with_high_locality(array, first, second);
-		quick_sort_helper(array, first, pivot_index-1);
-		quick_sort_helper(array, pivot_index+1, second);
+void quick_sort_helper(int * array, int firstElement, int lastElement) {
+	if(firstElement < lastElement) {
+		int pivot_index = partition_with_high_locality(array, firstElement, lastElement);
+		quick_sort_helper(array, firstElement, pivot_index-1);
+		quick_sort_helper(array, pivot_index+1, lastElement);
 	}
 }
 
